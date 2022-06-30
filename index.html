@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>BUS</title>
+        <style>
+            body {font-family: Arial, Helvetica, sans-serif;
+            background-image: url("css/11.jpg");
+            }
+            form {border: 3px solid #535252;
+            border-radius: 10px;
+            }
+
+            input[type=text], input[type=password] {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid rgb(39, 37, 37);
+            box-sizing: border-box;
+            border-radius: 10px;
+            }
+            button{
+                border-radius: 15px;
+            }
+            .button1 {
+            background-color: #04AA6D;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            }
+            .button2 {
+            background-color: #0f1bfb;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            }
+
+            button:hover {
+            opacity: 0.8;
+            }
+
+            .cancelbtn {
+            width: auto;
+            padding: 10px 18px;
+            background-color: #f44336;
+            }
+
+            .imgcontainer {
+            text-align: center;
+            margin: 24px 0 12px 0;
+            }
+
+            img.avatar {
+            width: 40%;
+            border-radius: 50%;
+            }
+
+            .container {
+            padding: 150px;
+            width: 25%;
+            margin: 0 auto;
+            text-align: center;
+            }
+
+            span.psw {
+            float: right;
+            padding-top: 16px;
+            }
+            footer {
+            position: relative;
+            text-align: center;
+            color: rgb(105, 101, 101);
+            
+            }
+            h2 {
+                color: #d1d1d1;
+            }
+            label {
+                color: #d1d1d1;
+            }
+        </style>
+    </head>
+    <body>
+        <form>
+            <div class="container">
+                <div class="forms-container">
+                    <div class="signin-signup">
+                <h2>Se connecter/ S'inscrire</h2>
+                <hr>
+                
+                <label for="email">Email</label>
+                <input type="text" placeholder="Email" name="email" id="email" class="input-field" required>
+    
+                <label>Password</label>
+               
+                <input type="password" placeholder="Password" name="psw" id="password" class="input-field" required>
+                <hr>
+                <button type="button" id="submitDataIn" name="submitData" class="button2">SE CONNECTER</button>
+                <button type="button" id="submitDataUp" name="submitData" class="button1" >S'INSCRIRE</button>
+
+                </div>
+            </div>
+        </form>
+    </body>
+    <footer>
+        <p>create by EQIMA</p>
+    </footer>
+    
+    <script type="module" src="index.js"></script>
+</html>

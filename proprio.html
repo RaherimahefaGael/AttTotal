@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>CRUD Firebase</title>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="css/vendor/font-awesome.min.css">
+	<link rel="stylesheet" href="css/vendor/bootstrap.min.css">
+	<link rel="stylesheet" href="css/style.css">
+	<style>
+
+	</style>
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="table-wrapper">
+			<div class="table-title">
+				<div class="row">
+					<div class="col-sm-6">
+						
+							
+							<a id="coperativepage" class="btn btn-primary" data-toggle="modal"><i
+								class="material-icons">pin_drop</i><span>Coopérative</span></a>
+							<a id="voiturepage" class="btn btn-primary" data-toggle="modal"><i
+								class="material-icons">directions_car</i><span>Voiture</span></a>
+						
+						<b>PROPRIETAIRE</b>
+					</div>
+					<div class="col-sm-6">
+						<a href="" id="hivoaka" class="btn btn-warning" data-toggle="modal"><i
+							class="material-icons"><mat-icon>directions_run</mat-icon></i> <span>se deconnecter</span></a>
+						<a href="" id="iza" class="btn btn-primary" data-toggle="modal"><i
+							class="material-icons"><mat-icon>person</mat-icon></i> <span>Utilsateur</span></a>
+						<a href="#addProprioModal" class="btn btn-success" data-toggle="modal"><i
+								class="material-icons">&#xE147;</i> <span>Nouveau proprietaire</span></a>
+						<a href="#deleteProprioModal" class="btn btn-danger" data-toggle="modal"><i
+								class="material-icons">&#xE15C;</i> <span>Supprimer</span></a>
+
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="form-group">
+							<!-- <input type="text" id="search-name" class="form-control" placeholder="Search by name"> -->
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="table-responsive">
+				<table id="proprio-table" class="table table-striped table-hover">
+					<thead>
+						<tr>
+							<th>
+								<span class="custom-checkbox">
+									<input type="checkbox" id="selectAll">
+									<label for="selectAll"></label>
+								</span>
+							</th>
+							<th>Nom Proprietaire</th>
+							<th>CIN</th>
+							<th>Adresse</th>
+							<th>Telephone Propriétaire</th>
+							<th>Mobile money</th>
+							<th>Actions</th>
+							<th>Voiture du proprietaire</th>
+						</tr>
+					</thead>
+					<tbody>
+					</tbody>
+				</table>
+			</div>
+			<div class="clearfix">
+				<div class="hint-text"><b class="count">0</b></div>
+				<!-- <ul class="pagination">
+					<li class="page-item"><a href="#" id="js-previous" class="page-link">Previous</a></li>
+					<li class="page-item"><a href="#" id="js-next" class="page-link">Next</a></li>
+				</ul> -->
+			</div>
+
+			<!-- <div class="readmore">
+				<button type="button" class="btn btn-primary js-loadmore">Load more</button>
+			</div> -->
+		</div>
+	</div>
+	<!-- add Modal HTML -->
+	<div id="addProprioModal" class="modal fade" data-backdrop="static" data-keyboard="false">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<form id="add-proprio-form">
+					<div class="modal-header">
+						<h4 class="modal-title">Nouveau Proprietaire</h4>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					</div>
+					<div class="modal-body">
+						<div class="form-group">
+							<label>Nom Proprietaire</label><br>
+								<input type="text" id="proprio-nom" class="form-control"></input>
+						</div>
+						<div class="form-group">
+							<label>CIN</label>
+							<input  id="proprio-cin" class="form-control" required>
+						</div>
+						<div class="form-group">
+							<label>Adresse</label>
+							<input id="proprio-adresse" class="form-control" required></input>
+						</div>
+						<div class="form-group">
+							<label>Telephone Propriétaire</label>
+							<input type="text" id="proprio-telephone" class="form-control" required>
+						</div>
+						<div class="form-group">
+							<label>Mobile money</label>
+							<input type="text" id="proprio-money" class="form-control" required>
+						</div>
+						
+					</div>
+					<div class="modal-footer">
+						<input type="button" class="btn btn-default" data-dismiss="modal" value="Annuler">
+						<input type="submit" class="btn btn-success" value="Ajouter">
+					</div>
+
+				</form>
+			</div>
+		</div>
+	</div>
+	<!-- Edit Modal HTML -->
+	<div id="editProprioModal" class="modal fade" data-backdrop="static" data-keyboard="false">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<form id="edit-proprio-form">
+					<div class="modal-header">
+						<h4 class="modal-title">Modifier</h4>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					</div>
+					<div class="modal-body">
+						<div class="form-group">
+							<label>Nom Proprietaire</label>
+							<input type="text" id="proprio-nom" class="form-control"></input>
+						</div>
+						<div class="form-group">
+							<label>CIN</label>
+							<input id="proprio-cin" class="form-control" required>
+						</div>
+						<div class="form-group">
+							<label>Adresse</label>
+							<input id="proprio-adresse" class="form-control" required></input>
+						</div>
+						<div class="form-group">
+							<label>Telephone Propriétaire</label>
+							<input type="text" id="proprio-telephone" class="form-control" required>
+						</div>
+						<div class="form-group">
+							<label>Mobile money</label>
+							<input type="text" id="proprio-money" class="form-control" required>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<input type="button" class="btn btn-default" data-dismiss="modal" value="Annuler">
+						<input type="submit" class="btn btn-info" value="Modifier">
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<!-- Delete Modal HTML -->
+	<div id="deleteProprioModal" class="modal fade" data-backdrop="static" data-keyboard="false">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<form id="delete-proprio-form">
+					<div class="modal-header">
+						<h4 class="modal-title">Supprimer</h4>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					</div>
+					<div class="modal-body">
+						
+						<p class="text-warning"><small>Voulez-vous vraiment supprimer ce proprietaire?</small></p>
+					</div>
+					<div class="modal-footer">
+						<input type="button" class="btn btn-default" data-dismiss="modal" value="Annuler">
+						<input type="submit" class="btn btn-danger" value="Supprimer">
+					</div>
+				</form>                
+			</div>
+		</div>        
+	</div>
+	<!-- list car HTML -->
+	<div id="listCarProprioModal" class="modal fade" data-backdrop="static" data-keyboard="false">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<form id="listCar-proprio-form">
+					<div class="modal-header">
+						<h4 class="modal-title">Liste de voiture</h4>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					</div>
+					<div class="modal-body">
+						
+						<p id="listVoit"><small></small></p>
+					</div>
+					<div class="modal-footer">
+						<input type="button" onblur="reloadPage()" class="btn btn-default" data-dismiss="modal" value="ok">
+					</div>
+				</form>                
+			</div>
+		</div>        
+	</div>
+
+
+	<script type="module" src="home.js"></script>
+	<script src="js/vendor/jquery.min.js"></script> 
+	<script src="js/vendor/bootstrap.min.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/6.4.2/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/6.4.2/firebase-firestore.js"></script>
+	<script>
+		var firebaseConfig = {
+			apiKey: "AIzaSyBQTxcbiMe8KItyDDu1JejFIUXUNJgUfQg",
+			authDomain: "biosy-1a05a.firebaseapp.com",
+			databaseURL: "https://biosy-1a05a-default-rtdb.firebaseio.com",
+			projectId: "biosy-1a05a",
+			storageBucket: "biosy-1a05a.appspot.com",
+			messagingSenderId: "484422190201",
+			appId: "1:484422190201:web:e97cadf9a9f425607ac0a8"
+		};
+		firebase.initializeApp(firebaseConfig);
+		const db = firebase.firestore();
+
+	</script>
+	<script src="js/proprio.js"></script>
+	<script src="js/reload.js"></script>
+	<script type="module" src="js/listVoit.js"></script>
+</body>
+</html>
